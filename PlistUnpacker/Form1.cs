@@ -264,9 +264,18 @@ namespace PlistUnpacker
             {
                 progressBar1.Value = i + 1;
                 Rectangle rect_src = new(parts[i].pos_x, parts[i].pos_y, parts[i].xl, parts[i].yl);
-                Rectangle rect_dest = new(parts[i].x,parts[i].y,parts[i].xl,parts[i].yl);
-                Bitmap bmp = new (parts[i].sprite_width,parts[i].sprite_height);
+                Rectangle rect_dest = new(parts[i].x, parts[i].y, parts[i].xl, parts[i].yl);
+                Bitmap bmp = new(parts[i].sprite_width, parts[i].sprite_height);
                 Graphics g = Graphics.FromImage(bmp);
+                /*
+                if (parts[i].is_rotate)
+                {
+                    g.TranslateTransform(bmp.Width / 2, bmp.Height / 2);
+                    g.RotateTransform(90);
+                    g.TranslateTransform(-bmp.Width / 2, -bmp.Height / 2);
+                    continue;
+                }
+                */
                 g.Clear(Color.Transparent);
                 g.DrawImage(img,rect_src,rect_dest,GraphicsUnit.Pixel);
                 g.Dispose();

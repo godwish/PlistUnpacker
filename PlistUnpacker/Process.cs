@@ -7,6 +7,12 @@ using System.Xml;
 
 public static class Process
 {
+    static void SwapInt(ref int a,ref int b)
+    {
+        int tmp = a;
+        a = b;
+        b = tmp;
+    }
     public static void ParsingXml(string name,out info_part[] infos)
     {
         List<info_part> ret = new();
@@ -43,6 +49,7 @@ public static class Process
                                 }
                             case "spriteSize":
                                 {
+                                    
                                     break;
                                 }
                             case "spriteSourceSize":
@@ -67,10 +74,18 @@ public static class Process
                                 }
                             case "textureRotated":
                                 {
+                                    if (info[j].NextSibling.OuterXml.Contains("true")) inf.is_rotate = true;
+                                    else inf.is_rotate = false;
                                     break;
                                 }
                             default:break;
                         }
+                    }
+                    if (inf.is_rotate)
+                    {
+                        SwapInt(ref inf.xl, ref inf.yl);
+                        SwapInt(ref inf.x2, ref inf.y2);
+                        SwapInt(ref inf.sprite_width, ref inf.sprite_height);
                     }
                 }
             }

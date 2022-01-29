@@ -3,6 +3,7 @@
 public class info_part
 {
 	public String name;
+	public bool is_rotate;
 	public int x, y;
 	public int xl, yl;
 	public int real_xl, real_yl;
