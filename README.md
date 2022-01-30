@@ -10,3 +10,10 @@ example.png example.plist
 unpacking
 
 1.png 2.png 3.png,...
+<img width="100%" src="https://user-images.githubusercontent.com/16094350/151681614-820a8607-daa4-4c96-811a-e639e366e469.png">
+
+Usage
+
+1. Drag the plist or png file to the program.
+2. Drag the output folder to the program.
+3. Push Extract Button
