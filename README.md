@@ -3,6 +3,8 @@
 
 Environment : Visual Studio 2019, Dotnet5
 
+
+
 This project recovers packed images using files in the form of plist, a file created by TexturePacker programs.
 
 The images collected in one image are split into this tool and restored.
