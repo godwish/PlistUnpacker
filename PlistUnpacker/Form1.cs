@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 using System.IO;
+using System.Diagnostics.Eventing.Reader;
 
 namespace PlistUnpacker
 {
@@ -267,19 +268,11 @@ namespace PlistUnpacker
                 Rectangle rect_dest = new(parts[i].x, parts[i].y, parts[i].xl, parts[i].yl);
                 Bitmap bmp = new(parts[i].sprite_width, parts[i].sprite_height);
                 Graphics g = Graphics.FromImage(bmp);
-                /*
-                if (parts[i].is_rotate)
-                {
-                    g.TranslateTransform(bmp.Width / 2, bmp.Height / 2);
-                    g.RotateTransform(90);
-                    g.TranslateTransform(-bmp.Width / 2, -bmp.Height / 2);
-                    continue;
-                }
-                */
                 g.Clear(Color.Transparent);
                 g.DrawImage(img,rect_src,rect_dest,GraphicsUnit.Pixel);
                 g.Dispose();
                 string name_out = tb_folder.Text + "\\" + parts[i].name+".png";
+                if (parts[i].is_rotate) bmp.RotateFlip(RotateFlipType.Rotate270FlipNone);
                 bmp.Save(name_out);
             }
         }
